@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Panel VIP</title>
+<style>
+body{margin:0;background:#0b1222;color:#fff;font-family:Inter,sans-serif}
+.wrap{max-width:480px;margin:0 auto;padding:16px}
+.back{display:flex;align-items:center;gap:6px;color:#6d8bc5;text-decoration:none;font-size:14px;margin-bottom:12px}
+.header h2{margin:0;font-size:22px;display:flex;align-items:center;gap:10px}
+.header p{color:#8fa3c7;font-size:13px;margin-top:8px}
+.card{background:#141f38;border:1px solid #223157;border-radius:20px;padding:20px;margin-top:16px}
+label{font-size:13px;color:#8fa3c7;display:flex;align-items:center;gap:6px}
+input{width:100%;padding:14px;border-radius:12px;border:1px solid #223157;background:#0f1a30;color:#fff;margin:8px 0 14px 0;box-sizing:border-box}
+button.main{width:100%;padding:14px;border-radius:12px;border:none;background:#f59e0b;color:#000;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.result{margin-top:16px;background:#020617;border:1px solid #223157;border-radius:12px;padding:12px;display:none}
+pre{white-space:pre-wrap;word-break:break-all;margin:0;font-size:13px;color:#a8c0e8}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="/">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Kembali ke Toko
+  </a>
+  <div class="header">
+    <h2>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
+      Panel VIP Privat
+    </h2>
+    <p>Auto create MEMBER real - backend /api/create-panel</p>
+  </div>
+  <div class="card">
+    <label>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      Username Panel
+    </label>
+    <input id="user" placeholder="contoh: zetsu123">
+    <button class="main" onclick="buat()">
+      Buat Panel MEMBER Sekarang
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+    <div id="box" class="result"><pre id="hasil"></pre></div>
+  </div>
+</div>
+<script>
+async function buat(){
+  const username = document.getElementById('user').value.trim();
+  if(!username) return alert('isi username dulu');
+  const box = document.getElementById('box');
+  const hasil = document.getElementById('hasil');
+  box.style.display='block';
+  hasil.textContent='Loading...';
+  try{
+    const res = await fetch('/api/create-panel',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username})});
+    const j = await res.json();
+    hasil.textContent = JSON.stringify(j,null,2);
+  }catch(e){ hasil.textContent = 'Error: '+e.message; }
+}
+</script>
+</body>
+</html>
