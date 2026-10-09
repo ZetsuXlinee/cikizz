@@ -1,90 +1,86 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <title>CiKiZz Store</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@500;600&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:#020b1e;color:#fff;overflow-x:hidden}
-.bg{position:fixed;inset:0;background:radial-gradient(700px at 15% 0%,rgba(37,99,235,.25),transparent),radial-gradient(600px at 85% 90%,rgba(6,182,212,.15),transparent),#020b1e;z-index:0}
-/* HEADER - FIX MOBILE */
-.header{position:relative;z-index:20;max-width:1150px;margin:14px auto;background:rgba(13,22,42,.92);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(16px)}
-.h-left{display:flex;align-items:center;gap:12px}
-.h-logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#0f1e3a,#1e3a8a);border:1px solid rgba(59,130,246,.4);display:flex;align-items:center;justify-content:center;box-shadow:0 0 18px rgba(59,130,246,.5)}
-.h-brand b{font-family:'Plus Jakarta Sans';font-size:19px;line-height:.9;display:block}.h-brand span{color:#60a5fa;font-size:11px;line-height:1.2;display:block;margin-top:3px}
-.h-center{display:flex;gap:22px;color:#94a3b8;font-size:13px;font-weight:600}.h-center a.active{color:#fff}
-.h-right{display:flex;align-items:center;gap:10px}
-.btn{padding:11px 18px;border-radius:14px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);color:#fff;font-weight:700;font-size:12.5px;cursor:pointer;display:flex;align-items:center;gap:6px;white-space:nowrap}.btn.blue{background:#2b5cff;border-color:#2b5cff;box-shadow:0 8px 24px rgba(43,92,255,.4)}.btn.red{background:#ef4444;border-color:#ef4444}
-.ham{display:none;width:38px;height:38px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);color:#fff;font-size:20px;cursor:pointer}
-.drawer{display:none;position:fixed;top:70px;left:12px;right:12px;z-index:30;background:#0f172a;border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:12px;flex-direction:column;gap:8px}.drawer.active{display:flex}
-.hero{position:relative;z-index:1;max-width:1150px;margin:30px auto;padding:0 16px;display:grid;grid-template-columns:1.15fr.85fr;gap:32px;align-items:center}
-.hero h1{font-family:'Plus Jakarta Sans';font-weight:800;font-size:48px;line-height:.95}.hero h1 span{color:#3b82f6}
-.hero p{color:#94a3b8;font-size:14px;margin:14px 0 20px 0}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
-.trust{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.trust div{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:8px 12px;font-size:11px;color:#cbd5e1}
-.phone{width:320px;max-width:100%;height:540px;background:linear-gradient(180deg,#0d1730,#080f24);border-radius:32px;border:1.5px solid rgba(148,163,184,.22);padding:12px;margin:0 auto;box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 40px rgba(59,130,246,.2)}
-.p-top{display:flex;justify-content:space-between;padding:8px 6px 12px;border-bottom:1px solid rgba(255,255,255,.08);font-size:13px;font-weight:600}
-.chat{display:flex;flex-direction:column;gap:12px;padding:14px 6px}
-.bub{padding:10px 14px;border-radius:16px;font-size:12.5px;max-width:86%}.bub.g{background:#1e293b;align-self:flex-start;border-radius:16px 16px 16px 4px;color:#cbd5e1}.bub.blue{border:1px solid #3b82f6;background:rgba(30,58,138,.5);align-self:center;width:100%;max-width:100%;text-align:center;color:#fff}.bub.o{border:1px solid rgba(255,255,255,.18);align-self:flex-start;border-radius:16px 16px 16px 4px;color:#cbd5e1}.bub.rb{border:1px solid #3b82f6;background:rgba(30,58,138,.25);align-self:flex-end;color:#cbd5e1;border-radius:16px 4px 16px 16px}
-.sec{max-width:1150px;margin:60px auto;padding:0 16px;position:relative;z-index:1}.sec h2{text-align:center;font-family:'Plus Jakarta Sans';font-size:22px}.sec span.sub{display:block;text-align:center;color:#3b82f6;font-size:11px;letter-spacing:3px;font-weight:700;margin-top:6px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
-.card{background:linear-gradient(180deg,rgba(20,31,56,.9),rgba(10,18,36,.9));border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px;position:relative}.badge{position:absolute;top:-10px;left:16px;background:#3b82f6;color:#fff;font-size:10px;font-weight:800;padding:4px 10px;border-radius:8px}
-.card h3{margin-top:12px;font-size:15px}.card p{color:#94a3b8;font-size:11.5px;margin:8px 0 14px;line-height:1.5}
-.foot{display:flex;justify-content:space-between;align-items:center}.price{color:#60a5fa;font-weight:800}.buy{padding:8px 12px;border-radius:10px;background:#1e3a8a;border:1px solid rgba(59,130,246,.4);color:#93c5fd;font-size:11px;font-weight:700;cursor:pointer}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}.sbox{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:14px;text-align:center}.sbox b{font-size:16px}.sbox span{font-size:11px;color:#94a3b8}
-
-/* LOGIN GATE WAJIB */
-#gate{position:fixed;inset:0;z-index:100;background:radial-gradient(600px at 20% 20%,rgba(43,92,255,.3),transparent),#020617;display:flex;align-items:center;justify-content:center;padding:16px}
-.g-box{width:100%;max-width:360px;background:#0f172a;border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:20px}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:#030c22;color:#fff;overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:-1;background:radial-gradient(700px at 10% 0%,rgba(37,99,235,.25),transparent),radial-gradient(600px at 90% 100%,rgba(6,182,212,.15),transparent),#030c22}
+.header{max-width:1140px;margin:12px auto;background:rgba(13,22,42,.92);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;backdrop-filter:blur(16px)}
+.h-left{display:flex;align-items:center;gap:10px;min-width:0}
+.h-logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#0f1e3a,#1e3a8a);border:1px solid rgba(59,130,246,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.h-brand{min-width:0}.h-brand b{font-family:'Plus Jakarta Sans';font-size:18px;line-height:1;display:block;white-space:nowrap}.h-brand span{color:#60a5fa;font-size:11px;line-height:1.2;display:block;margin-top:2px}
+.h-nav{display:flex;gap:18px;color:#94a3b8;font-size:12.5px;font-weight:600;align-items:center}.h-nav a.active{color:#fff}
+.h-right{display:flex;gap:8px;align-items:center}
+.btn{padding:10px 16px;border-radius:13px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.07);color:#fff;font-weight:700;font-size:12px;cursor:pointer;white-space:nowrap}.btn.blue{background:#2b5cff;border-color:#2b5cff}.btn.red{background:#ef4444;border-color:#ef4444}
+.ham{display:none;width:38px;height:38px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.07);color:#fff;font-size:20px}
+.drawer{display:none;position:fixed;top:68px;left:8px;right:8px;z-index:50;background:#0f172a;border:1px solid rgba(255,255,255,.15);border-radius:16px;padding:12px;flex-direction:column;gap:8px}.drawer.show{display:flex}
+.hero{max-width:1140px;margin:24px auto;padding:0 16px;display:grid;grid-template-columns:1.1fr.9fr;gap:28px;align-items:center}
+.hero h1{font-family:'Plus Jakarta Sans';font-weight:800;font-size:46px;line-height:.95}.hero h1 span{color:#3b82f6}
+.hero p.sub{color:#94a3b8;font-size:13px;margin:12px 0 18px}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.trust{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.trust div{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:7px 11px;font-size:10.5px;color:#cbd5e1}
+.phone{width:320px;max-width:100%;height:520px;background:linear-gradient(180deg,#0d1730,#080f24);border-radius:32px;border:1.5px solid rgba(148,163,184,.22);padding:12px;margin:0 auto}
+.p-top{display:flex;justify-content:space-between;padding:8px 6px 10px;border-bottom:1px solid rgba(255,255,255,.08);font-size:12.5px;font-weight:600}
+.chat{display:flex;flex-direction:column;gap:10px;padding:12px 6px}
+.bub{padding:10px 13px;border-radius:16px;font-size:12px;max-width:86%}.bub.g{background:#1e293b;color:#cbd5e1;align-self:flex-start;border-radius:16px 16px 16px 4px}.bub.blue{border:1px solid #3b82f6;background:rgba(30,58,138,.55);align-self:center;width:100%;text-align:center;color:#fff}.bub.rb{border:1px solid #3b82f6;background:rgba(30,58,138,.25);align-self:flex-end;color:#cbd5e1;border-radius:16px 4px 16px 16px}
+.sec{max-width:1140px;margin:50px auto;padding:0 16px}.sec h2{text-align:center;font-family:'Plus Jakarta Sans';font-size:20px}.sec.sub2{text-align:center;color:#3b82f6;font-size:11px;letter-spacing:3px;font-weight:700;margin-top:4px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+.card{background:linear-gradient(180deg,rgba(20,31,56,.9),rgba(10,18,36,.9));border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:18px;position:relative}.badge{position:absolute;top:-9px;left:14px;background:#3b82f6;color:#fff;font-size:10px;font-weight:800;padding:4px 9px;border-radius:8px}
+.card h3{margin-top:10px;font-size:14px}.card p{color:#94a3b8;font-size:11px;margin:6px 0 12px;line-height:1.5}
+.foot{display:flex;justify-content:space-between;align-items:center}.price{color:#60a5fa;font-weight:800;font-size:13px}.buy{padding:7px 11px;border-radius:10px;background:#1e3a8a;border:1px solid rgba(59,130,246,.4);color:#93c5fd;font-size:11px;font-weight:700;cursor:pointer}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}.sbox{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:12px;text-align:center}.sbox b{font-size:15px}.sbox span{font-size:10px;color:#94a3b8;display:block}
+#gate{position:fixed;inset:0;z-index:100;background:#020617;display:flex;align-items:center;justify-content:center;padding:16px}.g-box{width:100%;max-width:350px;background:#0f172a;border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:18px}
 .input{width:100%;padding:11px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#fff;margin-top:10px;outline:none}
 .role{display:flex;gap:6px;margin:12px 0}.role button{flex:1;padding:8px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#94a3b8;font-weight:700;font-size:11px;cursor:pointer}.role button.active{background:#2b5cff;color:#fff}
-#admin{position:fixed;inset:0;z-index:90;background:#020617;display:none;overflow:auto}#admin.active{display:block}
-.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(100px);background:#1e293b;border:1px solid rgba(255,255,255,.15);padding:10px 14px;border-radius:10px;font-size:12px;transition:.3s;z-index:200}.toast.show{transform:translateX(-50%) translateY(0)}
-
+#admin{position:fixed;inset:0;z-index:90;background:#020617;display:none;overflow:auto}#admin.show{display:block}
+.admin-head{position:sticky;top:0;background:#0b1222;border-bottom:1px solid rgba(255,255,255,.1);padding:10px 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.admin-wrap{max-width:1140px;margin:0 auto;padding:12px;display:grid;grid-template-columns:200px 1fr;gap:12px}
+.admin-nav{display:flex;flex-direction:column;gap:6px}
+.admin-card{background:#141f38;border:1px solid #223157;border-radius:14px;padding:14px}
+.toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%) translateY(100px);background:#1e293b;border:1px solid rgba(255,255,255,.15);padding:10px 14px;border-radius:10px;font-size:12px;transition:.3s;z-index:200}.toast.show{transform:translateX(-50%) translateY(0)}
 @media(max-width:900px){
-.h-center,.h-right.btn{display:none}.ham{display:flex;align-items:center;justify-content:center}
-.header{margin:8px;border-radius:16px;padding:10px 12px}
-.hero{grid-template-columns:1fr;gap:20px}.hero h1{font-size:30px}.phone{width:100%;max-width:340px;height:500px;order:-1}
+.h-nav{display:none}.h-right.btn:not(.icon-only){display:none}.ham{display:flex;align-items:center;justify-content:center}
+.header{margin:8px;border-radius:14px;padding:8px 10px}
+.hero{grid-template-columns:1fr;gap:16px}.hero h1{font-size:28px}.phone{width:100%;max-width:340px;height:460px;order:-1}
 .grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}
+.admin-wrap{grid-template-columns:1fr}.admin-nav{flex-direction:row;overflow:auto}.admin-nav.btn{flex-shrink:0}
 }
 </style>
 </head>
 <body>
 <div class="bg"></div>
 
-<div id="gate"><div class="g-box">
-<div style="display:flex;gap:10px;align-items:center;justify-content:center;margin-bottom:10px"><div class="h-logo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><path d="M12 2l7 4v6c0 5-3 7-7 10-4-3-7-5-7-10V6l7-4z"/><path d="M13 9l-3 5h3l-1 4 5-7h-3l0-2z" fill="#60a5fa" stroke="none"/></svg></div><div><b style="font-family:'Plus Jakarta Sans'">CiKiZz Store</b><div style="font-size:11px;color:#60a5fa">Login wajib dulu</div></div></div>
-<div class="role"><button type="button" id="rPublic" class="active" onclick="setR('public')">Public</button><button type="button" id="rReseller" onclick="setR('reseller')">Reseller</button><button type="button" id="rAdmin" onclick="setR('admin')">Admin</button></div>
-<input id="aU" class="input" placeholder="Username"><input id="aP" type="password" class="input" placeholder="Password"><button type="button" class="btn blue" style="width:100%;margin-top:12px;justify-content:center" onclick="login()">Masuk →</button><div style="font-size:10px;color:#64748b;text-align:center;margin-top:8px" id="rInfo">Public: bebas daftar</div>
-</div></div>
+<div id="gate"><div class="g-box"><div style="display:flex;gap:10px;align-items:center;justify-content:center;margin-bottom:10px"><div class="h-logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><path d="M12 2l7 4v6c0 5-3 7-7 10-4-3-7-5-7-10V6l7-4z"/><path d="M13 9l-3 5h3l-1 4 5-7h-3l0-2z" fill="#60a5fa" stroke="none"/></svg></div><div><b style="font-family:'Plus Jakarta Sans'">CiKiZz Store</b><div style="font-size:11px;color:#60a5fa">Wajib login</div></div></div><div class="role"><button type="button" id="rPublic" class="active" onclick="setR('public')">Public</button><button type="button" id="rReseller" onclick="setR('reseller')">Reseller</button><button type="button" id="rAdmin" onclick="setR('admin')">Admin</button></div><input id="aU" class="input" placeholder="Username"><input id="aP" type="password" class="input" placeholder="Password"><button type="button" class="btn blue" style="width:100%;margin-top:12px;justify-content:center" onclick="login()">Masuk →</button></div></div>
 
 <div class="header">
-<div class="h-left"><div class="h-logo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><path d="M12 2l7 4v6c0 5-3 7-7 10-4-3-7-5-7-10V6l7-4z"/><path d="M13 9l-3 5h3l-1 4 5-7h-3l0-2z" fill="#60a5fa" stroke="none"/></svg></div><div class="h-brand"><b>CiKiZz Store</b><span>Script Bot • WhatsApp Store</span></div></div>
-<div class="h-center"><a class="active">Home</a><a>Produk</a><a>Sewa Bot</a><a>Script Bot</a><a>FAQ</a><a>Kontak</a></div>
-<div class="h-right"><button type="button" class="btn red" id="btnLogout" onclick="logout()">Logout</button><button type="button" class="btn blue" id="btnDash" onclick="goDash()">Dashboard →</button><button type="button" class="ham" onclick="toggleDrawer()">☰</button></div>
+<div class="h-left"><div class="h-logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><path d="M12 2l7 4v6c0 5-3 7-7 10-4-3-7-5-7-10V6l7-4z"/><path d="M13 9l-3 5h3l-1 4 5-7h-3l0-2z" fill="#60a5fa" stroke="none"/></svg></div><div class="h-brand"><b>CiKiZz Store</b><span>Script Bot • WhatsApp Store</span></div></div>
+<div class="h-nav"><a class="active">Home</a><a>Produk</a><a>Sewa Bot</a><a>Script Bot</a><a>FAQ</a><a>Kontak</a></div>
+<div class="h-right"><button type="button" class="btn blue" id="btnDash" onclick="goDash()">Dashboard →</button><button type="button" class="btn red" id="btnLogout" onclick="logout()">Logout</button><button type="button" class="ham" onclick="toggleD()">☰</button></div>
 </div>
-<div class="drawer" id="drawer"><button type="button" class="btn red" onclick="logout()">Logout</button><button type="button" class="btn blue" onclick="goDash()">Dashboard →</button><div style="font-size:11px;color:#94a3b8;text-align:center;margin-top:6px" id="dUser"></div></div>
+<div class="drawer" id="drawer"><div style="font-size:12px;font-weight:700;margin-bottom:6px" id="dUser"></div><div class="h-nav" style="display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:10px"><a>Home</a><a>Produk</a><a>Sewa Bot</a><a>Script Bot</a><a>FAQ</a><a>Kontak</a></div><button type="button" class="btn blue" style="width:100%" onclick="goDash()">Dashboard →</button><button type="button" class="btn red" style="width:100%" onclick="logout()">Logout</button></div>
 
-<div class="hero"><div><h1><span>CiKiZz Store</span> Script Bot And Sewa Bot</h1><p>Bot WhatsApp Premium • Anti-Ban • 24/7 Support • Mudah & Aman</p><div class="hero-btns"><button type="button" class="btn blue" style="padding:12px 18px" onclick="document.getElementById('produk').scrollIntoView({behavior:'smooth'})">Beli Script Bot →</button><button type="button" class="btn" style="padding:12px 18px" onclick="document.getElementById('produk').scrollIntoView({behavior:'smooth'})">Sewa Bot Sekarang</button></div><div class="trust"><div>✅ Terpercaya 1000+ Pelanggan</div><div>🛡️ Anti-Ban & Aman</div><div>⚡ Aktif 24/7</div></div></div><div class="phone"><div class="p-top"><span>← CiKiZz Bot • online</span><span>📞 ⋮</span></div><div class="chat"><div class="bub g">Script Bot dong</div><div class="bub blue"><b>✓ Script Bot Aktif!</b>Fitur: Auto Reply | Anti Ban | Menu Interaktif</div><div class="bub g">Sewa Bot Sekarang</div><div class="bub rb">Aktif! 24/7 Ready</div></div></div></div>
+<div class="hero"><div><h1><span>CiKiZz Store</span> Script Bot And Sewa Bot</h1><p class="sub">Bot WhatsApp Premium • Anti-Ban • 24/7 Support • Mudah & Aman</p><div class="hero-btns"><button type="button" class="btn blue" onclick="document.getElementById('produk').scrollIntoView({behavior:'smooth'})">Beli Script Bot →</button><button type="button" class="btn" onclick="document.getElementById('produk').scrollIntoView({behavior:'smooth'})">Sewa Bot Sekarang</button></div><div class="trust"><div>✅ Terpercaya 1000+</div><div>🛡️ Anti-Ban</div><div>⚡ Aktif 24/7</div></div></div><div class="phone"><div class="p-top"><span>← CiKiZz Bot • online</span><span>📞 ⋮</span></div><div class="chat"><div class="bub g">Script Bot dong</div><div class="bub blue"><b>✓ Script Bot Aktif!</b> Fitur: Auto Reply | Anti Ban</div><div class="bub g">Sewa Bot Sekarang</div><div class="bub rb">Aktif! 24/7 Ready</div></div></div></div>
 
-<div class="sec" id="produk"><h2>Produk & Layanan</h2><span class="sub">PILIHAN TERPOPULER</span><div class="grid" id="grid"></div><div class="stats"><div class="sbox"><b>1000+</b><span>Pelanggan Aktif</span></div><div class="sbox"><b>99.9%</b><span>Uptime Server</span></div><div class="sbox"><b>24/7</b><span>Support CS</span></div><div class="sbox"><b>500+</b><span>Script Terjual</span></div></div></div>
+<div class="sec" id="produk"><h2>Produk & Layanan</h2><span class="sub2">PILIHAN TERPOPULER</span><div class="grid" id="grid"></div><div class="stats"><div class="sbox"><b>1000+</b><span>Pelanggan</span></div><div class="sbox"><b>99.9%</b><span>Uptime</span></div><div class="sbox"><b>24/7</b><span>Support</span></div><div class="sbox"><b>500+</b><span>Terjual</span></div></div></div>
 
-<div id="admin"><div style="position:sticky;top:0;background:#0b1222;border-bottom:1px solid rgba(255,255,255,.1);padding:12px 16px;display:flex;justify-content:space-between"><b>👑 Admin</b><div style="display:flex;gap:8px"><button type="button" class="btn" onclick="closeA()">Tutup</button><button type="button" class="btn red" onclick="logout()">Logout</button></div></div><div style="max-width:1100px;margin:0 auto;padding:16px;display:grid;grid-template-columns:200px 1fr;gap:12px"><div style="display:flex;flex-direction:column;gap:6px"><button type="button" id="ab1" class="btn blue" onclick="aTab('ov')">Overview</button><button type="button" id="ab2" class="btn" onclick="aTab('pr')">Produk</button><button type="button" id="ab3" class="btn" onclick="aTab('or')">Pesanan</button><button type="button" id="ab4" class="btn" onclick="aTab('re')">Reseller</button></div><div><div id="ad-ov" style="background:#141f38;border:1px solid #223157;border-radius:14px;padding:14px"><h3>Overview</h3><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"><div class="sbox"><b id="sP">0</b><span>Produk</span></div><div class="sbox"><b id="sR">0</b><span>Reseller</span></div><div class="sbox"><b id="sPe">0</b><span>Pending</span></div><div class="sbox"><b id="sO">Rp 0</b><span>Omzet</span></div></div></div><div id="ad-pr" style="display:none;background:#141f38;border:1px solid #223157;border-radius:14px;padding:14px;margin-top:10px"><h3>Produk</h3><input id="pT" class="input" placeholder="Nama"><input id="pD" class="input" placeholder="Deskripsi"><input id="pP" class="input" placeholder="Harga angka"><button type="button" class="btn blue" style="width:100%;margin-top:10px" onclick="addP()">Tambah</button><div id="aPL"></div></div><div id="ad-or" style="display:none;background:#141f38;border:1px solid #223157;border-radius:14px;padding:14px;margin-top:10px"><h3>Pesanan</h3><div id="aOL"></div></div><div id="ad-re" style="display:none;background:#141f38;border:1px solid #223157;border-radius:14px;padding:14px;margin-top:10px"><h3>Buat Reseller + Expired</h3><input id="rU" class="input" placeholder="Username"><input id="rP" class="input" placeholder="Password"><input id="rD" type="number" class="input" placeholder="Hari aktif"><button type="button" class="btn blue" style="width:100%;margin-top:10px;background:#8b5cf6;border-color:#8b5cf6" onclick="makeR()">Buat</button><div id="rL" style="margin-top:10px"></div></div></div></div></div>
+<div id="admin"><div class="admin-head"><b>👑 Admin CiKiZz</b><div style="display:flex;gap:8px"><button type="button" class="btn" onclick="closeA()">Tutup</button><button type="button" class="btn red" onclick="logout()">Logout</button></div></div><div class="admin-wrap"><div class="admin-nav"><button type="button" id="ab1" class="btn blue" onclick="aTab('ov')">Overview</button><button type="button" id="ab2" class="btn" onclick="aTab('pr')">Produk</button><button type="button" id="ab3" class="btn" onclick="aTab('or')">Pesanan</button><button type="button" id="ab4" class="btn" onclick="aTab('re')">Reseller</button></div><div><div id="ad-ov" class="admin-card"><h3>Overview</h3><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"><div class="sbox"><b id="sP">0</b><span>Produk</span></div><div class="sbox"><b id="sR">0</b><span>Reseller</span></div><div class="sbox"><b id="sPe">0</b><span>Pending</span></div><div class="sbox"><b id="sO">Rp 0</b><span>Omzet</span></div></div></div><div id="ad-pr" class="admin-card" style="display:none;margin-top:10px"><h3>Produk</h3><input id="pT" class="input" placeholder="Nama"><input id="pD" class="input" placeholder="Deskripsi"><input id="pP" class="input" placeholder="Harga"><button type="button" class="btn blue" style="width:100%;margin-top:10px" onclick="addP()">Tambah</button><div id="aPL" style="margin-top:10px"></div></div><div id="ad-or" class="admin-card" style="display:none;margin-top:10px"><h3>Pesanan</h3><div id="aOL"></div></div><div id="ad-re" class="admin-card" style="display:none;margin-top:10px"><h3>Buat Reseller + Expired</h3><input id="rU" class="input" placeholder="Username"><input id="rP" class="input" placeholder="Password"><input id="rD" type="number" class="input" placeholder="Hari aktif"><button type="button" class="btn blue" style="width:100%;margin-top:10px;background:#8b5cf6;border-color:#8b5cf6" onclick="makeR()">Buat Reseller</button><div id="rL" style="margin-top:10px"></div></div></div></div></div>
 
 <div class="toast" id="toast"></div>
 <script>
 let role='public';
 let products=JSON.parse(localStorage.getItem('cikizz_products')||'null')||[
-{title:'Script Bot Anti Ban V3',desc:'Bot WhatsApp fitur lengkap, anti ban, auto reply',price:50000,badge:'BESTSELLER'},
-{title:'Sewa Bot 30 Hari',desc:'Sewa bot siap pakai 24/7, support penuh',price:30000,badge:'POPULER',sub:'/bulan'},
-{title:'Script Bot Auto Order',desc:'Otomatis proses order, payment gateway',price:75000,badge:'BARU'},
+{title:'Script Bot Anti Ban V3',desc:'Bot WhatsApp fitur lengkap',price:50000,badge:'BESTSELLER'},
+{title:'Sewa Bot 30 Hari',desc:'Sewa bot 24/7 support penuh',price:30000,badge:'POPULER',sub:'/bulan'},
+{title:'Script Bot Auto Order',desc:'Otomatis proses order',price:75000,badge:'BARU'},
 ];
 let orders=JSON.parse(localStorage.getItem('cikizz_orders')||'[]');
 let resellers=JSON.parse(localStorage.getItem('cikizz_resellers')||'[]');
 function save(){localStorage.setItem('cikizz_products',JSON.stringify(products));localStorage.setItem('cikizz_orders',JSON.stringify(orders));localStorage.setItem('cikizz_resellers',JSON.stringify(resellers))}
-function render(){document.getElementById('grid').innerHTML=products.map(p=>`<div class="card"><div class="badge">${p.badge}</div><h3>${p.title}</h3><p>${p.desc}</p><div class="foot"><div class="price">Rp ${p.price.toLocaleString()} ${p.sub||''}</div><button type="button" class="buy" onclick="buy('${p.title.replace(/'/g,"\\'")}')">Beli Sekarang →</button></div></div>`).join('')}
+function render(){document.getElementById('grid').innerHTML=products.map(p=>`<div class="card"><div class="badge">${p.badge}</div><h3>${p.title}</h3><p>${p.desc}</p><div class="foot"><div class="price">Rp ${p.price.toLocaleString()}</div><button type="button" class="buy" onclick="buy('${p.title.replace(/'/g,"\\'")}')">Beli →</button></div></div>`).join('')}
 function buy(t){const p=products.find(x=>x.title===t);orders.push({id:Date.now(),title:t,price:p.price,status:'pending',user:localStorage.getItem('cikizz_user')||'public',time:new Date().toLocaleString()});save();upd();window.open(`https://wa.me/62882000572938?text=${encodeURIComponent('Order '+t)}`,'_blank');toast('Pending')}
-function setR(r){role=r;['Public','Reseller','Admin'].forEach(x=>document.getElementById('r'+x).className=role===x.toLowerCase()?'active':'');document.getElementById('rInfo').innerText=r==='reseller'?'Harus dibuat Admin + ada expired':r==='admin'?'admin / admin123':'Public bebas';}
+function setR(r){role=r;['Public','Reseller','Admin'].forEach(x=>document.getElementById('r'+x).className=role===x.toLowerCase()?'active':'')}
 function login(){
  const u=document.getElementById('aU').value.trim(),p=document.getElementById('aP').value.trim();
  if(!u||!p)return toast('isi user pass');
@@ -92,28 +88,21 @@ function login(){
  if(role==='reseller'){const f=resellers.find(x=>x.user===u&&x.pass===p);if(!f)return toast('reseller gak ada');if(new Date(f.expiredAt)<new Date())return toast('EXPIRED');localStorage.setItem('cikizz_sess',JSON.stringify({user:u,role:'reseller',expiredAt:f.expiredAt}));localStorage.setItem('cikizz_user',u);location.href='/vip.html';return}
  localStorage.setItem('cikizz_sess',JSON.stringify({user:u,role:'public'}));localStorage.setItem('cikizz_user',u);document.getElementById('gate').style.display='none';refresh();toast('Halo '+u);
 }
-function refresh(){const s=JSON.parse(localStorage.getItem('cikizz_sess')||'null');if(s){document.getElementById('btnLogout').innerText='Logout ('+s.user+')';document.getElementById('btnLogout').style.display='flex';document.getElementById('dUser').innerText=s.user+' • '+s.role;document.getElementById('btnDash').innerText=s.role==='admin'?'Admin Panel →':'Dashboard →';}}
-function goDash(){const s=JSON.parse(localStorage.getItem('cikizz_sess')||'null');if(!s)return;if(s.role==='admin')openA();else if(s.role==='reseller')location.href='/vip.html';toggleDrawer(false)}
-function toggleDrawer(force){const d=document.getElementById('drawer');if(typeof force==='boolean')d.classList.toggle('active',force);else d.classList.toggle('active')}
-function openA(){document.getElementById('admin').classList.add('active');aTab('ov');upd()}
-function closeA(){document.getElementById('admin').classList.remove('active')}
+function refresh(){const s=JSON.parse(localStorage.getItem('cikizz_sess')||'null');if(s){document.getElementById('dUser').innerText=s.user+' • '+s.role;document.getElementById('btnLogout').innerText='Logout ('+s.user+')';}}
+function goDash(){const s=JSON.parse(localStorage.getItem('cikizz_sess')||'null');if(!s)return;if(s.role==='admin')openA();else if(s.role==='reseller')location.href='/vip.html';document.getElementById('drawer').classList.remove('show')}
+function toggleD(){document.getElementById('drawer').classList.toggle('show')}
+function openA(){document.getElementById('admin').classList.add('show');aTab('ov');upd()}
+function closeA(){document.getElementById('admin').classList.remove('show')}
 function aTab(t){['ov','pr','or','re'].forEach(x=>{document.getElementById('ad-'+x).style.display=x===t?'block':'none';document.getElementById('ab'+{ov:1,pr:2,or:3,re:4}[x]).className=x===t?'btn blue':'btn'});upd()}
 function upd(){document.getElementById('sP').innerText=products.length;document.getElementById('sR').innerText=resellers.length;document.getElementById('sPe').innerText=orders.filter(x=>x.status==='pending').length;document.getElementById('sO').innerText='Rp '+orders.filter(x=>x.status==='done').reduce((a,b)=>a+b.price,0).toLocaleString();document.getElementById('aPL').innerHTML=products.map((p,i)=>`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08)"><b style="font-size:12px">${p.title}</b><button type="button" class="btn" style="padding:4px 8px" onclick="delP(${i})">Hapus</button></div>`).join('');document.getElementById('aOL').innerHTML=orders.map(o=>`<div style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08)"><b style="font-size:12px">${o.title}</b> - ${o.user}<button type="button" class="btn blue" style="padding:2px 6px;margin-left:6px" onclick="setO(${o.id},'done')">Done</button><button type="button" class="btn" style="padding:2px 6px" onclick="setO(${o.id},'cancel')">X</button></div>`).join('')||'kosong';document.getElementById('rL').innerHTML=resellers.map((r,i)=>`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08)"><div><b style="font-size:12px">${r.user}</b><div style="font-size:10px;color:${new Date(r.expiredAt)<new Date()?'#ef4444':'#22c55e'}">${new Date(r.expiredAt).toLocaleDateString()} - ${r.pass}</div></div><button type="button" class="btn" style="padding:4px 6px;background:#ef4444" onclick="delR(${i})">Del</button></div>`).join('')||'belum ada';}
 function addP(){const t=document.getElementById('pT').value.trim(),d=document.getElementById('pD').value.trim(),pr=parseInt(document.getElementById('pP').value.replace(/[^0-9]/g,''))||0;if(!t||!pr)return toast('isi');products.push({title:t,desc:d,price:pr,badge:'BARU'});save();render();upd()}
 function delP(i){products.splice(i,1);save();render();upd()}
 function setO(id,s){let idx=orders.findIndex(x=>x.id===id);if(idx>-1){if(s==='cancel')orders.splice(idx,1);else orders[idx].status=s;save();upd()}}
-function makeR(){const u=document.getElementById('rU').value.trim(),p=document.getElementById('rP').value.trim(),d=parseInt(document.getElementById('rD').value)||0;if(!u||!p||!d)return toast('isi');if(resellers.find(x=>x.user===u))return toast('udah ada');const ex=new Date();ex.setDate(ex.getDate()+d);resellers.push({user:u,pass:p,expiredAt:ex.toISOString()});save();upd();toast('Reseller '+u)}
+function makeR(){const u=document.getElementById('rU').value.trim(),p=document.getElementById('rP').value.trim(),d=parseInt(document.getElementById('rD').value)||0;if(!u||!p||!d)return toast('isi');if(resellers.find(x=>x.user===u))return toast('udah ada');const ex=new Date();ex.setDate(ex.getDate()+d);resellers.push({user:u,pass:p,expiredAt:ex.toISOString()});save();upd();toast('Reseller '+u+' '+d+' hari')}
 function delR(i){resellers.splice(i,1);save();upd()}
-function logout(){localStorage.removeItem('cikizz_sess');localStorage.removeItem('cikizz_user');document.getElementById('gate').style.display='flex';closeA();toggleDrawer(false);toast('Logout')}
+function logout(){localStorage.removeItem('cikizz_sess');localStorage.removeItem('cikizz_user');document.getElementById('gate').style.display='flex';closeA();document.getElementById('drawer').classList.remove('show');toast('Logout')}
 function toast(m){const t=document.getElementById('toast');t.innerText=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
-window.onload=()=>{
- render();upd();
- const s=JSON.parse(localStorage.getItem('cikizz_sess')||'null');
- if(s){
-  if(s.role==='reseller'&&new Date(s.expiredAt)<new Date()){localStorage.removeItem('cikizz_sess');document.getElementById('gate').style.display='flex';}
-  else{document.getElementById('gate').style.display='none';refresh();}
- }else{document.getElementById('gate').style.display='flex';}
-};
+window.onload=()=>{render();upd();const s=JSON.parse(localStorage.getItem('cikizz_sess')||'null');if(s){if(s.role==='reseller'&&new Date(s.expiredAt)<new Date()){localStorage.removeItem('cikizz_sess');document.getElementById('gate').style.display='flex';}else{document.getElementById('gate').style.display='none';refresh();}}else{document.getElementById('gate').style.display='flex';}}
 </script>
 </body>
 </html>
