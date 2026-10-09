@@ -1,1 +1,6 @@
-{ "type": "module", "dependencies": {} }
+{
+  "rewrites": [
+    { "source": "/vip", "destination": "/public/vip.html" },
+    { "source": "/vip.html", "destination": "/public/vip.html" }
+  ]
+}
