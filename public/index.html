@@ -1,86 +1,118 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>CiKiZz Store</title>
 <style>
-body{margin:0;background:#0b1222;color:#fff;font-family:Inter,sans-serif}
-.top{display:flex;align-items:center;justify-content:space-between;padding:16px;background:#111b32;border-bottom:1px solid #1e2a4a}
-.brand{display:flex;align-items:center;gap:12px}
-.brand-icon{width:44px;height:44px;background:#0f1e3a;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px solid #2a3b66}
-.brand b{font-size:18px}
-.brand span{font-size:13px;color:#6d8bc5;display:block}
-.btns{display:flex;gap:10px}
-.btn{padding:10px 18px;border-radius:24px;border:1px solid #2a3b66;background:#1a2744;color:#fff;font-weight:600;cursor:pointer;text-decoration:none;font-size:13px}
-.btn.primary{background:#2f6bff;border-color:#2f6bff}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:Inter,sans-serif;background:#0b1222;color:#fff;overflow-x:hidden}
+.top{display:flex;align-items:center;justify-content:space-between;padding:16px;background:#111b32;border-bottom:1px solid #1e2a4a;position:sticky;top:0;z-index:20}
+.brand{display:flex;align-items:center;gap:12px}.brand-icon{width:44px;height:44px;background:#0f1e3a;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px solid #2a3b66}
+.btn{padding:10px 18px;border-radius:24px;border:1px solid #2a3b66;background:#1a2744;color:#fff;font-weight:600;cursor:pointer;font-size:13px;text-decoration:none}.btn.primary{background:#2f6bff;border-color:#2f6bff}.btn.orange{background:#f59e0b;color:#000;border-color:#f59e0b;font-weight:800}
 .wrap{padding:16px;display:flex;flex-direction:column;gap:16px;max-width:480px;margin:0 auto}
 .card{background:#141f38;border:1px solid #223157;border-radius:20px;padding:18px;position:relative}
-.badge{position:absolute;top:-10px;left:14px;font-size:11px;font-weight:700;padding:5px 10px;border-radius:12px}
-.badge.blue{background:#2f6bff}
-.badge.light{background:#3b82f6}
-.badge.orange{background:#f59e0b;color:#000}
+.badge{position:absolute;top:-10px;left:14px;font-size:11px;font-weight:700;padding:5px 10px;border-radius:12px}.badge.blue{background:#2f6bff}.badge.light{background:#3b82f6}.badge.orange{background:#f59e0b;color:#000}
 .icon-box{width:40px;height:40px;background:#0f1a30;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-top:8px;border:1px solid #223157}
-.card h3{margin:12px 0 4px 0;font-size:18px}
-.card p{margin:0;color:#8fa3c7;font-size:13px}
-.card-foot{display:flex;align-items:center;justify-content:space-between;margin-top:16px}
-.price{color:#4f8cff;font-weight:700;font-size:18px}
+.card h3{margin:12px 0 4px 0;font-size:18px}.card p{margin:0;color:#8fa3c7;font-size:13px}
+.card-foot{display:flex;align-items:center;justify-content:space-between;margin-top:16px}.price{color:#4f8cff;font-weight:700;font-size:18px}
 .buy{display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:20px;border:1px solid #2d4a8a;background:transparent;color:#8fb0ff;cursor:pointer}
+
+/* AUTH GATE - pake UI lama */
+#authGate{position:fixed;inset:0;z-index:500;background:#0b1222;display:flex;align-items:center;justify-content:center;padding:16px}
+.auth-card{width:100%;max-width:380px;background:#141f38;border:1px solid #223157;border-radius:20px;padding:22px}
+.input{width:100%;padding:12px;border-radius:12px;border:1px solid #223157;background:#0f1a30;color:#fff;outline:none;margin-top:10px}
+.role{display:flex;gap:6px;margin:10px 0}.role button{flex:1;padding:9px;border-radius:12px;border:1px solid #223157;background:#0f1a30;color:#8fa3c7;cursor:pointer;font-size:12px;font-weight:700}.role.active{background:#2f6bff;color:#fff;border-color:#2f6bff}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:999;padding:16px}.modal.active{display:flex}
+.modal-box{background:#141f38;border:1px solid #223157;border-radius:20px;padding:18px;width:100%;max-width:400px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:#1e2a4a;border:1px solid #2a3b66;padding:10px 16px;border-radius:12px;font-size:12px;transition:.4s;z-index:1000}.toast.show{transform:translateX(-50%) translateY(0)}
+#mainContent,#adminContent,#resellerContent{display:none}#mainContent.active,#adminContent.active,#resellerContent.active{display:block}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}.stat-card{background:#141f38;border:1px solid #223157;border-radius:14px;padding:12px;text-align:center}.stat-card b{font-size:18px;display:block}.stat-card span{font-size:11px;color:#6d8bc5}
+.tag{padding:3px 8px;border-radius:999px;font-size:10px;font-weight:700}.tag.pending{background:rgba(234,179,8,.15);border:1px solid rgba(234,179,8,.3);color:#fde047}.tag.done{background:rgba(34,197,94,.15);border:1px solid rgba(34,197,94,.3);color:#86efac}
 </style>
 </head>
 <body>
-<div class="top">
-  <div class="brand">
-    <div class="brand-icon">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5b8def" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-    </div>
-    <div><b>CiKiZz Store</b><span>reseller</span></div>
-  </div>
-  <div class="btns">
-    <a class="btn" href="#">Logout</a>
-    <a class="btn primary" href="#">Pesanan</a>
-  </div>
+
+<!-- LOGIN GATE -->
+<div id="authGate"><div class="auth-card">
+<div style="display:flex;gap:10px;align-items:center;justify-content:center;margin-bottom:12px"><div class="brand-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5b8def" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><div><div style="font-weight:800">CiKiZz Store</div><div style="font-size:11px;color:#6d8bc5">VIP Real via server.js</div></div></div>
+<div class="role"><button id="rolePublic" class="active" onclick="setRole('public')">Public</button><button id="roleReseller" onclick="setRole('reseller')">Reseller</button><button id="roleAdmin" onclick="setRole('admin')">Admin</button></div>
+<input id="gUser" class="input" placeholder="Username"><input id="gPass" type="password" class="input" placeholder="Password"><button class="btn primary" style="width:100%;margin-top:12px;padding:12px" onclick="gateLogin()">Masuk →</button>
+<div style="font-size:10px;color:#4a5d85;text-align:center;margin-top:10px">Public: bebas | Reseller: reseller/reseller123 | Admin: admin/admin123</div>
+</div></div>
+
+<!-- PUBLIC STORE -->
+<div id="mainContent">
+<div class="top"><div class="brand"><div class="brand-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#5b8def" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><div><b>CiKiZz Store</b><span id="userName" style="font-size:12px;color:#6d8bc5;display:block">User</span></div></div><div style="display:flex;gap:8px"><div class="btn" onclick="logout()">Logout</div><div class="btn primary" onclick="openUserOrders()">Pesanan</div></div></div>
+<div class="wrap" id="grid"></div>
 </div>
 
+<!-- RESELLER PANEL VIP -->
+<div id="resellerContent">
+<div class="top"><div class="brand"><div class="brand-icon" style="border-color:#f59e0b">⚡</div><div><b>VIP Private</b><span id="resellerName" style="font-size:12px;color:#f59e0b;display:block">-</span></div></div><div style="display:flex;gap:8px"><div class="btn" onclick="showResTab('history')">History</div><div class="btn" onclick="logout()">Logout</div></div></div>
 <div class="wrap">
-  <div class="card">
-    <div class="badge blue">BESTSELLER</div>
-    <div class="icon-box">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4f8cff" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
-    </div>
-    <h3>Script Bot Anti Ban V3</h3>
-    <p>Fitur lengkap auto backup</p>
-    <div class="card-foot">
-      <div class="price">Rp 50.000</div>
-      <button class="buy">Beli <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="badge light">POPULER</div>
-    <div class="icon-box">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-    </div>
-    <h3>Sewa Bot 30 Hari</h3>
-    <p>Sewa 24/7 online</p>
-    <div class="card-foot">
-      <div class="price">Rp 30.000</div>
-      <button class="buy">Beli <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="badge orange">VIP</div>
-    <div class="icon-box">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-    </div>
-    <h3>Panel VIP Privat</h3>
-    <p>Akses reseller auto create</p>
-    <div class="card-foot">
-      <div class="price">Rp 15.000</div>
-      <a href="/vip.html" style="text-decoration:none"><button class="buy">Beli <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></a>
-    </div>
-  </div>
+<div id="res-create">
+<div class="card" style="border-color:rgba(245,158,11,.3)"><h3>⚡ Panel VIP - MEMBER REAL</h3><p style="margin-top:6px">Backend <b style="color:#fff">/api/create-panel</b> - auto MEMBER bukan admin - password cikizz+random</p><input id="vipName" class="input" placeholder="Nama customer ex: Zetsu Store"><button class="btn orange" style="width:100%;margin-top:12px;padding:12px" onclick="createVipPanel()">🚀 Buat Panel MEMBER Sekarang →</button></div>
+<div id="vipResult" style="display:none" class="card"><div style="display:flex;justify-content:space-between"><b style="color:#86efac">Hasil</b><span onclick="document.getElementById('vipResult').style.display='none'" style="cursor:pointer">✕</span></div><div id="vipResultContent" style="margin-top:10px;font-size:12px;line-height:1.7"></div><button class="btn primary" style="margin-top:10px" onclick="copyVip()">Copy</button></div>
 </div>
+<div id="res-history" style="display:none"><div class="card"><h3>📜 History Panel</h3><div id="vipHistoryList" style="margin-top:10px"></div></div></div>
+</div>
+</div>
+
+<!-- ADMIN -->
+<div id="adminContent">
+<div class="top"><div class="brand"><div class="brand-icon">👑</div><div><b>Admin Panel</b><span style="font-size:12px;color:#6d8bc5;display:block">Kelola produk & pesanan</span></div></div><div class="btn" onclick="logout()">Logout</div></div>
+<div class="wrap" style="max-width:600px">
+<div class="role" style="margin-bottom:12px"><button id="at1" class="active" onclick="showAdminTab('overview')">Overview</button><button id="at2" onclick="showAdminTab('products')">Produk</button><button id="at3" onclick="showAdminTab('orders')">Pesanan</button><button id="at4" onclick="showAdminTab('reseller')">Reseller</button></div>
+<div id="admin-overview"><div class="stat-grid"><div class="stat-card"><b id="aTotalProduk">0</b><span>Produk</span></div><div class="stat-card"><b id="aPending">0</b><span>Pending</span></div><div class="stat-card"><b id="aDone">0</b><span>Selesai</span></div><div class="stat-card"><b id="aOmzet">Rp 0</b><span>Omzet</span></div></div></div>
+<div id="admin-products" style="display:none"><div class="card"><h3>Tambah Produk</h3><input id="pTitle" class="input" placeholder="Nama produk"><input id="pDesc" class="input" placeholder="Deskripsi"><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><input id="pPrice" class="input" placeholder="Harga angka"><select id="pCat" class="input"><option>BESTSELLER</option><option>POPULER</option><option>VIP</option><option>BARU</option></select></div><button class="btn primary" style="width:100%;margin-top:10px" onclick="addProduct()">Tambah</button></div><div class="card"><div id="aProductList"></div></div></div>
+<div id="admin-orders" style="display:none"><div class="card"><div id="aOrderList"></div></div></div>
+<div id="admin-reseller" style="display:none"><div class="card"><h3>Setting Reseller</h3><input id="setResellerUser" class="input" placeholder="Username reseller"><input id="setResellerPass" class="input" placeholder="Password reseller"><button class="btn primary" style="width:100%;margin-top:10px;background:#a855f7" onclick="saveResellerCreds()">Simpan Akun Reseller</button><div id="currentConfig" style="font-size:11px;color:#8fa3c7;margin-top:10px"></div></div></div>
+</div>
+</div>
+
+<!-- MODALS -->
+<div class="modal" id="modal"><div class="modal-box"><div style="display:flex;justify-content:space-between"><b id="mTitle"></b><span onclick="closeModal()" style="cursor:pointer">✕</span></div><p id="mDesc" style="font-size:12px;color:#8fa3c7;margin-top:6px"></p><div id="mPrice" style="color:#4f8cff;font-weight:800;margin-top:10px"></div><button class="btn primary" style="width:100%;margin-top:12px" onclick="confirmOrder()">Order Pending</button></div></div>
+<div class="modal" id="userOrderModal"><div class="modal-box"><div style="display:flex;justify-content:space-between"><b>Pesanan Saya</b><span onclick="document.getElementById('userOrderModal').classList.remove('active')" style="cursor:pointer">✕</span></div><div id="userOrderList" style="margin-top:10px"></div></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+let role='public';
+let products=JSON.parse(localStorage.getItem('products')||'null')||[
+{title:'Script Bot Anti Ban V3',desc:'Fitur lengkap auto backup',priceLabel:'Rp 50.000',price:50000,badge:'BESTSELLER',badgeClass:'blue',wa:'ANTI BAN V3'},
+{title:'Sewa Bot 30 Hari',desc:'Sewa 24/7 online',priceLabel:'Rp 30.000',price:30000,badge:'POPULER',badgeClass:'light',wa:'SEWA 30 HARI'},
+{title:'Panel VIP Privat',desc:'Akses reseller auto create',priceLabel:'Rp 15.000',price:15000,badge:'VIP',badgeClass:'orange',wa:'PANEL VIP',isVip:true},
+];
+function saveProducts(){localStorage.setItem('products',JSON.stringify(products))}
+function getOrders(){return JSON.parse(localStorage.getItem('orders')||'[]')}
+function saveOrders(o){localStorage.setItem('orders',JSON.stringify(o))}
+function getResellerCreds(){return JSON.parse(localStorage.getItem('resellerCreds')||'{"user":"reseller","pass":"reseller123"}')}
+function getVipHistory(){return JSON.parse(localStorage.getItem('vipHistory')||'[]')}
+function saveVipHistory(h){localStorage.setItem('vipHistory',JSON.stringify(h))}
+function parsePrice(s){return parseInt(String(s).replace(/[^0-9]/g,''))||0}
+let selected=null;
+function render(){const grid=document.getElementById('grid');if(!grid)return;grid.innerHTML='';products.forEach(p=>{const el=document.createElement('div');el.className='card';el.innerHTML=`<div class="badge ${p.badgeClass||'blue'}">${p.badge}</div><div class="icon-box">${p.isVip?'⚡':'📦'}</div><h3>${p.title}</h3><p>${p.desc}</p><div class="card-foot"><div class="price">${p.priceLabel}</div><button class="buy" onclick="openModal('${p.title.replace(/'/g,"\\'")}')">Beli →</button></div>`;grid.appendChild(el)});}
+function openModal(t){selected=products.find(p=>p.title===t);if(!selected)return;if(selected.isVip){localStorage.setItem('user','reseller');localStorage.setItem('role','reseller');showReseller();return}document.getElementById('mTitle').innerText=selected.title;document.getElementById('mDesc').innerText=selected.desc;document.getElementById('mPrice').innerText=selected.priceLabel;document.getElementById('modal').classList.add('active')}
+function closeModal(){document.getElementById('modal').classList.remove('active')}
+function confirmOrder(){let orders=getOrders();orders.push({id:Date.now(),...selected,status:'pending',time:new Date().toLocaleString(),user:localStorage.getItem('user')});saveOrders(orders);window.open(`https://wa.me/62882000572938?text=${encodeURIComponent('Pesan '+selected.wa)}`,'_blank');closeModal();showToast('Order PENDING');updateAdmin()}
+function setRole(r){role=r;['public','reseller','admin'].forEach(x=>document.getElementById('role'+x.charAt(0).toUpperCase()+x.slice(1)).className=r===x?'active':'');}
+function gateLogin(){const u=document.getElementById('gUser').value.trim(),p=document.getElementById('gPass').value.trim();if(!u||p.length<3){showToast('Isi user pass');return}if(role==='admin'){if(u!=='admin'||p!=='admin123'){showToast('Admin salah');return}localStorage.setItem('user','admin');localStorage.setItem('role','admin');showAdmin();}else if(role==='reseller'){let creds=getResellerCreds();if(u!==creds.user||p!==creds.pass){showToast('Reseller salah');return}localStorage.setItem('user',u);localStorage.setItem('role','reseller');showReseller();}else{localStorage.setItem('user',u);localStorage.setItem('role','public');showPublic();}}
+function showPublic(){document.getElementById('authGate').style.display='none';document.getElementById('mainContent').classList.add('active');document.getElementById('adminContent').classList.remove('active');document.getElementById('resellerContent').classList.remove('active');document.getElementById('userName').innerText=localStorage.getItem('user');render();}
+function showAdmin(){document.getElementById('authGate').style.display='none';document.getElementById('adminContent').classList.add('active');document.getElementById('mainContent').classList.remove('active');document.getElementById('resellerContent').classList.remove('active');updateAdmin();showAdminTab('overview');}
+function showReseller(){document.getElementById('authGate').style.display='none';document.getElementById('resellerContent').classList.add('active');document.getElementById('mainContent').classList.remove('active');document.getElementById('adminContent').classList.remove('active');document.getElementById('resellerName').innerText=localStorage.getItem('user');showResTab('create');updateVipHistory();}
+function showResTab(t){document.getElementById('res-create').style.display=t==='create'?'block':'none';document.getElementById('res-history').style.display=t==='history'?'block':'none';if(t==='history')updateVipHistory()}
+async function createVipPanel(){const name=document.getElementById('vipName').value.trim();if(!name){showToast('Isi nama');return}const randomNum=Math.floor(10000+Math.random()*90000);const password=`cikizz${randomNum}`;const username=name.toLowerCase().replace(/[^a-z0-9]/g,'').substring(0,10)+randomNum.toString().substring(0,3);const email=`${username}@cikizz.store`;document.getElementById('vipResultContent').innerHTML='⏳ Creating MEMBER via /api/create-panel...';document.getElementById('vipResult').style.display='block';try{const res=await fetch('/api/create-panel',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username,email,first_name:name,password})});const data=await res.json();if(!res.ok)throw new Error(JSON.stringify(data.errors||data).substring(0,400));const panelData={id:data.attributes.id,name,username,password,email,time:new Date().toLocaleString(),reseller:localStorage.getItem('user')};let h=getVipHistory();h.unshift(panelData);saveVipHistory(h);document.getElementById('vipResultContent').innerHTML=`✅ <b style="color:#86efac">BERHASIL! MEMBER DIBUAT!</b><br>Username: <b>${username}</b><br>Password: <b style="color:#fbbf24">${password}</b><br>Email: ${email}<br>ID: ${data.attributes.id}<br>Role: <b style="color:#86efac">MEMBER ✓</b>`;updateVipHistory();showToast('SUKSES');document.getElementById('vipName').value='';}catch(e){document.getElementById('vipResultContent').innerHTML=`<span style="color:#fca5a5">❌ Gagal: ${e.message}</span>`}}
+function copyVip(){navigator.clipboard.writeText(document.getElementById('vipResultContent').innerText);showToast('Copied')}
+function updateVipHistory(){let h=getVipHistory();document.getElementById('vipHistoryList').innerHTML=h.length?h.map(v=>`<div class="card" style="padding:12px;margin-top:8px"><b style="font-size:12px">${v.name}</b> - <span style="font-size:11px;color:#fbbf24">${v.password}</span><br><small style="color:#6d8bc5">${v.username} | ${v.email}<br>${v.time}</small></div>`).join(''):'<div style="color:#6d8bc5;font-size:12px">Belum ada</div>'}
+function updateAdmin(){const orders=getOrders();document.getElementById('aTotalProduk').innerText=products.length;document.getElementById('aPending').innerText=orders.filter(o=>o.status==='pending').length;document.getElementById('aDone').innerText=orders.filter(o=>o.status==='done').length;document.getElementById('aOmzet').innerText='Rp '+orders.filter(o=>o.status==='done').reduce((s,o)=>s+(o.price||0),0).toLocaleString();document.getElementById('aProductList').innerHTML=products.map((p,i)=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #1e2a4a"><div><b style="font-size:12px">${p.title}</b><div style="font-size:11px;color:#6d8bc5">${p.priceLabel} • ${p.badge}</div></div><button class="btn" style="padding:6px 10px;font-size:11px" onclick="deleteProduct(${i})">Hapus</button></div>`).join('');renderAdminOrders();let creds=getResellerCreds();document.getElementById('currentConfig').innerHTML=`Reseller: <b>${creds.user}</b> / ${creds.pass}<br>Backend: /api/create-panel (PTLA aman)`}
+function renderAdminOrders(){let orders=getOrders();document.getElementById('aOrderList').innerHTML=orders.length?orders.map(o=>`<div class="card" style="padding:12px;margin-top:8px"><div><b style="font-size:12px">${o.title}</b> ${o.status==='pending'?'<span class="tag pending">PENDING</span>':'<span class="tag done">DONE</span>'}<br><small style="color:#6d8bc5">${o.user} | ${o.time} | ${o.priceLabel}</small></div>${o.status==='pending'?`<div style="display:flex;gap:6px;margin-top:8px"><button class="btn primary" style="padding:6px 10px;font-size:11px" onclick="updateOrderStatus(${o.id},'done')">Selesai</button><button class="btn" style="padding:6px 10px;font-size:11px" onclick="updateOrderStatus(${o.id},'cancel')">Batal</button></div>`:''}</div>`).join(''):'<div style="color:#6d8bc5">Tidak ada pesanan</div>'}
+function showAdminTab(t){['overview','products','orders','reseller'].forEach(x=>{document.getElementById('admin-'+x).style.display=x===t?'block':'none';document.getElementById('at'+(['overview','products','orders','reseller'].indexOf(x)+1)).className=x===t?'active':''});updateAdmin()}
+function saveResellerCreds(){const u=document.getElementById('setResellerUser').value.trim(),p=document.getElementById('setResellerPass').value.trim();if(!u||!p){showToast('Isi user pass');return}localStorage.setItem('resellerCreds',JSON.stringify({user:u,pass:p}));showToast('Reseller disimpan');updateAdmin()}
+function addProduct(){const title=document.getElementById('pTitle').value.trim(),desc=document.getElementById('pDesc').value.trim(),priceNum=parsePrice(document.getElementById('pPrice').value),priceLabel='Rp '+priceNum.toLocaleString(),badge=document.getElementById('pCat').value;if(!title||!priceNum){showToast('Isi nama harga');return}products.push({title,desc:desc||'Custom',price:priceNum,priceLabel,badge,badgeClass:badge==='VIP'?'orange':badge==='BESTSELLER'?'blue':'light',wa:title});saveProducts();updateAdmin();render();showToast('Produk ditambah')}
+function deleteProduct(i){products.splice(i,1);saveProducts();updateAdmin();render()}
+function openUserOrders(){let orders=getOrders().filter(o=>o.user===localStorage.getItem('user'));document.getElementById('userOrderList').innerHTML=orders.length?orders.map(o=>`<div class="card" style="padding:12px;margin-top:8px"><b style="font-size:12px">${o.title}</b> ${o.status==='pending'?'<span class="tag pending">PENDING</span>':'<span class="tag done">DONE</span>'}<br><small style="color:#6d8bc5">${o.priceLabel}</small></div>`).join(''):'<div style="font-size:12px;color:#6d8bc5">Belum ada</div>';document.getElementById('userOrderModal').classList.add('active')}
+function updateOrderStatus(id,s){let o=getOrders();let idx=o.findIndex(x=>x.id===id);if(idx>-1){if(s==='cancel')o.splice(idx,1);else o[idx].status=s;saveOrders(o);updateAdmin()}}
+function logout(){localStorage.removeItem('user');localStorage.removeItem('role');document.getElementById('authGate').style.display='flex';document.getElementById('mainContent').classList.remove('active');document.getElementById('adminContent').classList.remove('active');document.getElementById('resellerContent').classList.remove('active')}
+function showToast(m){const t=document.getElementById('toast');t.innerText=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
+window.onload=()=>{const u=localStorage.getItem('user'),r=localStorage.getItem('role');if(u&&r==='admin')showAdmin();else if(u&&r==='reseller')showReseller();else if(u&&r==='public')showPublic();else document.getElementById('authGate').style.display='flex';render();};
+</script>
 </body>
 </html>
