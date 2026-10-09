@@ -3,122 +3,87 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>CiKiZz Store</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:#030a1e;color:#fff;overflow-x:hidden}
-.bg{position:fixed;inset:0;z-index:0;background:radial-gradient(600px at 10% 20%,rgba(37,99,235,.25),transparent),radial-gradient(700px at 90% 80%,rgba(14,165,233,.18),transparent),#030a1e}
-.header{position:relative;z-index:10;max-width:1120px;margin:18px auto;background:linear-gradient(180deg,rgba(15,23,42,.9),rgba(10,16,32,.9));border:1px solid rgba(148,163,184,.18);border-radius:18px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 0 0 1px rgba(255,255,255,.04) inset,0 10px 40px rgba(0,0,0,.5)}
-.left{display:flex;align-items:center;gap:14px}
-.shield{width:44px;height:52px;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 0 14px rgba(59,130,246,.6))}
-.nav{display:flex;gap:20px;font-size:13px;font-weight:600;color:#94a3b8}
-.nav a.active{color:#fff;position:relative}.nav a.active::after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:2px;background:#3b82f6;border-radius:2px}
-.right{display:flex;align-items:center;gap:10px}
-.btn{border-radius:14px;padding:11px 18px;font-weight:700;font-size:13px;cursor:pointer;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:#fff;display:flex;align-items:center;gap:8px}
-.btn.blue{background:#2f5bff;border-color:#2f5bff;box-shadow:0 6px 24px rgba(47,91,255,.45)}
+.bg{position:fixed;inset:0;z-index:0;background:radial-gradient(500px at 10% 10%,rgba(37,99,235,.28),transparent),radial-gradient(600px at 90% 85%,rgba(14,165,233,.18),transparent),#030a1e}
+.header{position:relative;z-index:10;max-width:1120px;margin:14px auto;background:linear-gradient(180deg,rgba(15,23,42,.92),rgba(10,16,32,.92));border:1px solid rgba(148,163,184,.18);border-radius:18px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.left{display:flex;align-items:center;gap:10px;min-width:0}.shield{flex-shrink:0;width:42px;height:48px;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 0 12px rgba(59,130,246,.6))}
+.brand-text{line-height:1;min-width:0}.brand-text b{font-family:'Plus Jakarta Sans';font-weight:800;font-size:19px;display:block}.brand-text small{color:#60a5fa;font-size:10.5px;display:block;margin-top:2px;line-height:1.2}
+.nav{display:flex;gap:16px;font-size:12.5px;font-weight:600;color:#94a3b8;flex-shrink:0}.nav a.active{color:#fff;position:relative}.nav a.active::after{content:'';position:absolute;left:0;right:0;bottom:-5px;height:2px;background:#3b82f6}
+.right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.btn{border-radius:13px;padding:10px 16px;font-weight:700;font-size:12.5px;cursor:pointer;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:#fff;display:flex;align-items:center;gap:6px;white-space:nowrap}.btn.blue{background:#2f5bff;border-color:#2f5bff;box-shadow:0 6px 20px rgba(47,91,255,.4)}.btn.red{background:#ef4444;border-color:#ef4444}
 .ham{display:none;font-size:22px;background:none;border:none;color:#fff;cursor:pointer}
-.hero{position:relative;z-index:1;max-width:1120px;margin:36px auto;display:grid;grid-template-columns:1.15fr.85fr;gap:30px;padding:0 16px;align-items:center}
-.hero h1{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:44px;line-height:1.05}
-.hero h1.blue{color:#3b82f6}.hero.desc{color:#94a3b8;font-size:13px;margin:14px 0 22px 0;letter-spacing:.2px}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
-.btn-lg{padding:13px 20px;border-radius:14px;font-weight:700;font-size:14px}
-.trust{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
-.trust-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:8px 12px;font-size:11px;font-weight:600;display:flex;align-items:center;gap:7px;color:#cbd5e1}
-.phone{width:320px;height:560px;margin:0 auto;background:linear-gradient(180deg,#0b1226,#070d1f);border-radius:34px;border:1.5px solid rgba(148,163,184,.22);box-shadow:0 0 0 6px rgba(255,255,255,.04),0 30px 80px rgba(0,0,0,.6),0 0 60px rgba(59,130,246,.25);padding:10px;position:relative;overflow:hidden}
-.phone::before{content:'';position:absolute;inset:0;border-radius:34px;box-shadow:inset 0 0 30px rgba(59,130,246,.15);pointer-events:none}
-.phone-top{display:flex;align-items:center;justify-content:space-between;padding:10px 8px 12px 8px;border-bottom:1px solid rgba(255,255,255,.08);font-size:14px;font-weight:600}
-.chat{display:flex;flex-direction:column;gap:12px;padding:14px 8px}
-.bubble{max-width:85%;padding:10px 14px;border-radius:18px;font-size:13px;line-height:1.4}
-.bubble.user{background:#1e293b;color:#cbd5e1;align-self:flex-start;border-radius:18px 18px 18px 6px}
-.bubble.bot-blue{background:rgba(30,58,138,.6);border:1px solid #3b5bff;color:#fff;align-self:center;width:100%;max-width:100%;text-align:center;border-radius:16px}
-.bubble.bot-blue b{color:#60a5fa;display:block}
-.bubble.bot-small{background:transparent;border:1px solid rgba(255,255,255,.18);color:#cbd5e1;align-self:flex-end;border-radius:18px 6px 18px 18px}
-.bubble.right-blue{border:1px solid #3b5bff;background:rgba(30,58,138,.35);align-self:flex-end;color:#cbd5e1}
-.products-sec{max-width:1120px;margin:60px auto;padding:0 16px;position:relative;z-index:1}
-.products-sec h2{text-align:center;font-family:'Plus Jakarta Sans',sans-serif;font-size:20px;font-weight:700}
-.products-sec.sub{text-align:center;color:#3b82f6;font-size:11px;letter-spacing:3px;font-weight:700;margin-top:6px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
-.pcard{position:relative;background:linear-gradient(180deg,rgba(17,26,48,.9),rgba(10,18,36,.9));border:1px solid rgba(148,163,184,.18);border-radius:18px;padding:18px}
-.pbadge{position:absolute;top:-10px;left:16px;background:#3b82f6;color:#fff;font-size:10px;font-weight:800;padding:4px 10px;border-radius:8px;letter-spacing:.5px}
-.pcard h3{margin-top:12px;font-size:15px;font-weight:700}.pcard p{color:#94a3b8;font-size:11.5px;margin:8px 0 16px 0;line-height:1.5}
-.pfoot{display:flex;justify-content:space-between;align-items:center}
-.price{color:#60a5fa;font-weight:800}
-.pbtn{padding:8px 14px;border-radius:12px;background:#1e3a8a;border:1px solid rgba(59,130,246,.4);color:#93c5fd;font-size:11px;font-weight:700;cursor:pointer}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
-.sbox{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:14px;text-align:center}
-.sbox b{font-size:16px}.sbox span{font-size:11px;color:#94a3b8;display:block;margin-top:2px}
+.hero{position:relative;z-index:1;max-width:1120px;margin:28px auto;display:grid;grid-template-columns:1.1fr.9fr;gap:24px;padding:0 16px;align-items:center}
+.hero h1{font-family:'Plus Jakarta Sans';font-weight:800;font-size:42px;line-height:1.05;word-wrap:break-word}.hero h1 span{color:#3b82f6;display:block}.hero.sub{color:#94a3b8;font-size:13px;margin:12px 0 20px 0}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap}
+.trust{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}.t-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:7px 10px;font-size:10.5px;display:flex;align-items:center;gap:6px;color:#cbd5e1}
+.phone{width:320px;max-width:100%;height:540px;background:linear-gradient(180deg,#0b1226,#070d1f);border-radius:32px;border:1.5px solid rgba(148,163,184,.22);box-shadow:0 0 0 5px rgba(255,255,255,.04),0 20px 60px rgba(0,0,0,.5);padding:10px;margin:0 auto}
+.phone-top{display:flex;justify-content:space-between;padding:10px 8px;border-bottom:1px solid rgba(255,255,255,.08);font-size:13px;font-weight:600}
+.chat{display:flex;flex-direction:column;gap:11px;padding:12px 6px}
+.bubble{max-width:85%;padding:10px 13px;border-radius:16px;font-size:12.5px}.bubble.u{background:#1e293b;color:#cbd5e1;align-self:flex-start;border-radius:16px 16px 16px 4px}.bubble.bb{background:rgba(30,58,138,.65);border:1px solid #3b5bff;color:#fff;align-self:center;width:100%;text-align:center}.bubble.r{background:transparent;border:1px solid rgba(255,255,255,.18);align-self:flex-end;border-radius:16px 4px 16px 16px}.bubble.rb{border:1px solid #3b5bff;background:rgba(30,58,138,.3);align-self:flex-end;color:#cbd5e1}
+.sec{max-width:1120px;margin:50px auto;padding:0 16px;position:relative;z-index:1}.sec h2{text-align:center;font-family:'Plus Jakarta Sans';font-size:20px}.sec.sub2{text-align:center;color:#3b82f6;font-size:11px;letter-spacing:2.5px;font-weight:700;margin-top:4px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+.pcard{background:linear-gradient(180deg,rgba(17,26,48,.9),rgba(10,18,36,.9));border:1px solid rgba(148,163,184,.18);border-radius:18px;padding:18px;position:relative}
+.pbadge{position:absolute;top:-9px;left:14px;background:#3b82f6;color:#fff;font-size:10px;font-weight:800;padding:4px 9px;border-radius:8px}
+.pcard h3{margin-top:10px;font-size:14.5px}.pcard p{color:#94a3b8;font-size:11.5px;margin:7px 0 14px 0;line-height:1.5}
+.pfoot{display:flex;justify-content:space-between;align-items:center}.price{color:#60a5fa;font-weight:800;font-size:14px}.pbtn{padding:7px 12px;border-radius:10px;background:#1e3a8a;border:1px solid rgba(59,130,246,.4);color:#93c5fd;font-size:11px;font-weight:700;cursor:pointer}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:20px}.sbox{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px;text-align:center}.sbox b{font-size:15px}.sbox span{font-size:10.5px;color:#94a3b8;display:block}
 
-/* MODAL & ADMIN - TETAP ADA TAPI GAK NGERUSAK UI PUBLIC */
-#auth{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.7);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:16px}
-#auth.active{display:flex}.abox{width:100%;max-width:360px;background:#0f172a;border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:18px}
+/* AUTH WAJIB - LOCK SCREEN */
+#authGate{position:fixed;inset:0;z-index:200;background:radial-gradient(600px at 20% 20%,rgba(47,91,255,.25),transparent),#020617;display:flex;align-items:center;justify-content:center;padding:16px}
+.auth-box{width:100%;max-width:360px;background:#0f172a;border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:20px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
 .input{width:100%;padding:11px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#fff;margin-top:10px;outline:none}
 .role{display:flex;gap:6px;margin:12px 0}.role button{flex:1;padding:8px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#94a3b8;font-weight:700;font-size:11px;cursor:pointer}.role button.active{background:#2f5bff;color:#fff}
-#admin{position:fixed;inset:0;z-index:90;background:#020617;display:none;overflow:auto}#admin.active{display:block}
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(100px);background:#1e293b;border:1px solid rgba(255,255,255,.15);padding:10px 16px;border-radius:12px;font-size:12px;transition:.3s;z-index:200}.toast.show{transform:translateX(-50%) translateY(0)}
+#admin{position:fixed;inset:0;z-index:150;background:#020617;display:none;overflow:auto}#admin.active{display:block}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%) translateY(100px);background:#1e293b;border:1px solid rgba(255,255,255,.15);padding:10px 14px;border-radius:10px;font-size:12px;transition:.3s;z-index:300}.toast.show{transform:translateX(-50%) translateY(0)}
 
 @media(max-width:900px){
-.nav{display:none}.ham{display:block}.hero{grid-template-columns:1fr;text-align:left}.phone{width:300px;height:520px;order:-1}.hero h1{font-size:32px}.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.header{margin:10px}
+.nav{display:none}.ham{display:block}
+.header{margin:8px;padding:10px 12px;border-radius:14px}
+.left{flex:1}.brand-text b{font-size:17px}.brand-text small{font-size:9.5px}
+.hero{grid-template-columns:1fr;gap:18px;margin:14px auto}
+.hero h1{font-size:26px;line-height:1.15}
+.phone{width:100%;max-width:320px;height:480px}
+.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
 <body>
 <div class="bg"></div>
 
+<!-- LOGIN WAJIB DULU -->
+<div id="authGate">
+<div class="auth-box">
+<div style="display:flex;gap:10px;align-items:center;justify-content:center;margin-bottom:12px">
+<div class="shield"><svg width="38" height="46" viewBox="0 0 44 52" fill="none"><path d="M22 2L6 10V24.5C6 34 12.5 42.5 22 50C31.5 42.5 38 34 38 24.5V10L22 2Z" fill="#0f1e3a" stroke="#2a4a9a" stroke-width="1.5"/><path d="M24.5 15L17 26H22.5L21 36L31 24H25.5L27 15H24.5Z" fill="#3b82f6"/></svg></div>
+<div><b style="font-family:'Plus Jakarta Sans';font-size:18px">CiKiZz Store</b><div style="font-size:11px;color:#60a5fa">Login dulu untuk masuk</div></div>
+</div>
+<div class="role"><button type="button" id="rPublic" class="active" onclick="setRole('public')">Public</button><button type="button" id="rReseller" onclick="setRole('reseller')">Reseller</button><button type="button" id="rAdmin" onclick="setRole('admin')">Admin</button></div>
+<input id="aUser" class="input" placeholder="Username"><input id="aPass" type="password" class="input" placeholder="Password"><button type="button" class="btn blue" style="width:100%;margin-top:12px;justify-content:center" onclick="doLogin()">Masuk ke Store →</button>
+<div id="roleInfo" style="font-size:10px;color:#64748b;text-align:center;margin-top:10px">Public bebas | Reseller harus dibuat Admin + expired | admin/admin123</div>
+</div>
+</div>
+
 <div class="header">
-<div class="left">
-<div class="shield">
-<!-- SVG SHIELD PERSIS KAYA DI GAMBAR -->
-<svg width="44" height="52" viewBox="0 0 44 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M22 2L6 10V24.5C6 34 12.5 42.5 22 50C31.5 42.5 38 34 38 24.5V10L22 2Z" fill="#0f1e3a" stroke="#2a4a9a" stroke-width="1.5"/>
-<path d="M22 6L10 12V24.2C10 32 15 39 22 45C29 39 34 32 34 24.2V12L22 6Z" fill="#0b1936" stroke="#3b82f6" stroke-width="1.2" stroke-opacity=".6"/>
-<g filter="url(#glow)">
-<path d="M24.5 15L17 26H22.5L21 36L31 24H25.5L27 15H24.5Z" fill="#3b82f6" stroke="#60a5fa" stroke-width=".8"/>
-</g>
-<defs><filter id="glow" x="0" y="0" width="50" height="50" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#3b82f6" flood-opacity=".8"/></filter></defs>
-</svg>
-</div>
-<div><div style="font-family:'Plus Jakarta Sans';font-weight:800;font-size:22px;line-height:1">CiKiZz<br>Store</div><div style="color:#60a5fa;font-size:11px;margin-top:2px">Script Bot •<br>WhatsApp<br>Store</div></div>
-</div>
+<div class="left"><div class="shield"><svg width="42" height="48" viewBox="0 0 44 52" fill="none"><path d="M22 2L6 10V24.5C6 34 12.5 42.5 22 50C31.5 42.5 38 34 38 24.5V10L22 2Z" fill="#0f1e3a" stroke="#2a4a9a" stroke-width="1.5"/><path d="M24.5 15L17 26H22.5L21 36L31 24H25.5L27 15H24.5Z" fill="#3b82f6"/></svg></div><div class="brand-text"><b>CiKiZz Store</b><small>Script Bot • WhatsApp Store</small></div></div>
 <div class="nav"><a class="active">Home</a><a>Produk</a><a>Sewa Bot</a><a>Script Bot</a><a>FAQ</a><a>Kontak</a></div>
-<div class="right">
-<button type="button" class="btn" id="btnMasuk" onclick="openAuth()">
-<!-- SVG GHOST PERSIS KAYA DI GAMBAR -->
-<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2C7 2 3 6 3 10.5c0 2.2 1 4.2 2.6 5.6.4 1.4-.2 2.9-.2 2.9s1.8-.6 2.9-1.8c.9.3 1.8.4 2.7.4h2c.9 0 1.8-.1 2.7-.4 1.1 1.2 2.9 1.8 2.9 1.8s-.6-1.5-.2-2.9C20 14.7 21 12.7 21 10.5 21 6 17 2 12 2Z" fill="white" fill-opacity=".9"/><circle cx="9" cy="10" r="1.5" fill="#020617"/><circle cx="15" cy="10" r="1.5" fill="#020617"/><path d="M9 13.5c1 1 3 1 6 0" stroke="#020617" stroke-width="1" stroke-linecap="round"/></svg>
-Masuk
-</button>
-<button type="button" class="btn blue" id="btnDash" onclick="handleDash()">Dashboard <span>→</span></button>
-<button type="button" class="ham" onclick="openAuth()">☰</button>
-</div>
+<div class="right"><button type="button" class="btn red" id="btnMasuk" onclick="logout()">Logout</button><button type="button" class="btn blue" id="btnDash" onclick="handleDash()">Dashboard →</button><button type="button" class="ham" onclick="handleDash()">☰</button></div>
 </div>
 
 <div class="hero">
 <div>
-<h1><span class="blue">CiKiZz Store</span> Script Bot And Sewa Bot</h1>
-<div class="desc">Bot WhatsApp Premium • Anti-Ban • 24/7 Support • Mudah & Aman</div>
-<div class="hero-btns"><button type="button" class="btn blue btn-lg" onclick="scrollProd()">Beli Script Bot →</button><button type="button" class="btn btn-lg" onclick="scrollProd()">Sewa Bot Sekarang</button></div>
-<div class="trust"><div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 3 4 1-1 4 2 3-2 3 1 4-4 1-3 3-3-3-4-1 1-4-2-3 2-3-1-4 4-1 3-3Z" fill="#22c55e"/><path d="M8 12l2 2 5-5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg> Terpercaya 1000+ Pelanggan</div><div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-2.7 8.3-7 10-4.3-1.7-7-5.5-7-10V6l7-3Z" stroke="#94a3b8" stroke-width="1.5"/></svg> Anti-Ban & Aman</div><div class="trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h5l-1 8 10-12h-5l1-8Z" fill="#94a3b8"/></svg> Aktif 24/7</div></div>
+<h1><span style="color:#3b82f6">CiKiZz Store</span> Script Bot And Sewa Bot</h1>
+<div class="sub">Bot WhatsApp Premium • Anti-Ban • 24/7 Support • Mudah & Aman</div>
+<div style="display:flex;gap:10px;flex-wrap:wrap"><button type="button" class="btn blue" style="padding:12px 18px" onclick="document.getElementById('produk').scrollIntoView({behavior:'smooth'})">Beli Script Bot →</button><button type="button" class="btn" style="padding:12px 18px" onclick="document.getElementById('produk').scrollIntoView({behavior:'smooth'})">Sewa Bot Sekarang</button></div>
+<div class="trust"><div class="t-item">✅ Terpercaya 1000+ Pelanggan</div><div class="t-item">🛡️ Anti-Ban & Aman</div><div class="t-item">⚡ Aktif 24/7</div></div>
+</div>
+<div class="phone"><div class="phone-top"><span>← CiKiZz Bot • online</span><span>📞 ⋮</span></div><div class="chat"><div class="bubble u">Script Bot dong</div><div class="bubble bb"><b>✓ Script Bot Aktif!</b>Fitur: Auto Reply | Anti Ban | Menu Interaktif</div><div class="bubble u">Sewa Bot Sekarang</div><div class="bubble rb">Aktif! 24/7 Ready</div></div></div>
 </div>
 
-<div class="phone">
-<div class="phone-top"><span>← CiKiZz Bot • online</span><span>📞 ⋮</span></div>
-<div class="chat">
-<div class="bubble user">Script Bot dong</div>
-<div class="bubble bot-blue"><b>✓ Script Bot Aktif!</b>Fitur: Auto Reply | Anti Ban | Menu Interaktif</div>
-<div class="bubble user">Sewa Bot Sekarang</div>
-<div class="bubble right-blue">Aktif! 24/7 Ready</div>
-</div>
-</div>
-</div>
+<div class="sec" id="produk"><h2>Produk & Layanan</h2><div class="sub2">PILIHAN TERPOPULER</div><div class="grid" id="grid"></div><div class="stats"><div class="sbox"><b>1000+</b><span>Pelanggan Aktif</span></div><div class="sbox"><b>99.9%</b><span>Uptime Server</span></div><div class="sbox"><b>24/7</b><span>Support CS</span></div><div class="sbox"><b>500+</b><span>Script Terjual</span></div></div></div>
 
-<div class="products-sec" id="produk"><h2>Produk & Layanan</h2><div class="sub">PILIHAN TERPOPULER</div><div class="grid" id="grid"></div><div class="stats"><div class="sbox"><b>1000+</b><span>Pelanggan Aktif</span></div><div class="sbox"><b>99.9%</b><span>Uptime Server</span></div><div class="sbox"><b>24/7</b><span>Support CS</span></div><div class="sbox"><b>500+</b><span>Script Terjual</span></div></div></div>
-
-<div id="auth"><div class="abox"><div style="display:flex;justify-content:space-between"><b>Login CiKiZz</b><span style="cursor:pointer" onclick="closeAuth()">✕</span></div><div class="role"><button type="button" id="rPublic" class="active" onclick="setRole('public')">Public</button><button type="button" id="rReseller" onclick="setRole('reseller')">Reseller</button><button type="button" id="rAdmin" onclick="setRole('admin')">Admin</button></div><input id="aUser" class="input" placeholder="Username"><input id="aPass" type="password" class="input" placeholder="Password"><button type="button" class="btn blue" style="width:100%;margin-top:12px;justify-content:center" onclick="doLogin()">Masuk →</button><div id="roleInfo" style="font-size:10px;color:#64748b;text-align:center;margin-top:8px">Public bebas belanja</div></div></div>
-
-<div id="admin"><div style="position:sticky;top:0;background:#0b1222;border-bottom:1px solid rgba(255,255,255,.1);padding:14px 20px;display:flex;justify-content:space-between"><b>👑 Admin - CiKiZz Store</b><div style="display:flex;gap:8px"><button type="button" class="btn" onclick="closeAdmin()">Tutup</button><button type="button" class="btn" onclick="logout()">Logout</button></div></div><div style="max-width:1100px;margin:0 auto;padding:20px;display:grid;grid-template-columns:200px 1fr;gap:16px"><div style="display:flex;flex-direction:column;gap:6px"><button type="button" id="ab1" class="btn blue" onclick="aTab('overview')">Overview</button><button type="button" id="ab2" class="btn" onclick="aTab('products')">Produk</button><button type="button" id="ab3" class="btn" onclick="aTab('orders')">Pesanan</button><button type="button" id="ab4" class="btn" onclick="aTab('reseller')">Reseller + Expired</button></div><div>
-<div id="ad-overview" style="background:#141f38;border:1px solid #223157;border-radius:16px;padding:16px"><h3>Overview</h3><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"><div class="sbox"><b id="stProd">0</b><span>Produk</span></div><div class="sbox"><b id="stRes">0</b><span>Reseller</span></div><div class="sbox"><b id="stPend">0</b><span>Pending</span></div><div class="sbox"><b id="stOmz">Rp 0</b><span>Omzet</span></div></div></div>
-<div id="ad-products" style="display:none;background:#141f38;border:1px solid #223157;border-radius:16px;padding:16px;margin-top:12px"><h3>Tambah Produk</h3><input id="pTitle" class="input" placeholder="Nama"><input id="pDesc" class="input" placeholder="Deskripsi"><input id="pPrice" class="input" placeholder="Harga angka"><button type="button" class="btn blue" style="width:100%;margin-top:10px" onclick="addProd()">Tambah</button><div id="aProdList" style="margin-top:12px"></div></div>
-<div id="ad-orders" style="display:none;background:#141f38;border:1px solid #223157;border-radius:16px;padding:16px;margin-top:12px"><h3>Pesanan</h3><div id="aOrderList"></div></div>
-<div id="ad-reseller" style="display:none;background:#141f38;border:1px solid #223157;border-radius:16px;padding:16px;margin-top:12px"><h3>Buat Reseller (Wajib Admin)</h3><input id="rU" class="input" placeholder="Username reseller"><input id="rP" class="input" placeholder="Password"><input id="rD" type="number" class="input" placeholder="Masa aktif hari ex: 30"><button type="button" class="btn blue" style="width:100%;margin-top:10px;background:#8b5cf6;border-color:#8b5cf6" onclick="makeRes()">Buat Reseller</button><div id="rList" style="margin-top:12px"></div></div>
-</div></div></div>
+<div id="admin"><div style="position:sticky;top:0;background:#0b1222;border-bottom:1px solid rgba(255,255,255,.1);padding:12px 16px;display:flex;justify-content:space-between;align-items:center"><b>👑 Admin CiKiZz</b><div style="display:flex;gap:8px"><button type="button" class="btn" onclick="closeAdmin()">Tutup</button><button type="button" class="btn red" onclick="logout()">Logout</button></div></div><div style="max-width:1100px;margin:0 auto;padding:16px;display:grid;grid-template-columns:200px 1fr;gap:12px"><div style="display:flex;flex-direction:column;gap:6px"><button type="button" id="ab1" class="btn blue" onclick="aTab('ov')">Overview</button><button type="button" id="ab2" class="btn" onclick="aTab('pr')">Produk</button><button type="button" id="ab3" class="btn" onclick="aTab('or')">Pesanan</button><button type="button" id="ab4" class="btn" onclick="aTab('re')">Reseller + Expired</button></div><div><div id="ad-ov" style="background:#141f38;border:1px solid #223157;border-radius:14px;padding:14px"><h3>Overview</h3><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"><div class="sbox"><b id="stProd">0</b><span>Produk</span></div><div class="sbox"><b id="stRes">0</b><span>Reseller</span></div><div class="sbox"><b id="stPend">0</b><span>Pending</span></div><div class="sbox"><b id="stOmz">Rp 0</b><span>Omzet</span></div></div></div><div id="ad-pr" style="display:none;background:#141f38;border:1px solid #223157;border-radius:14px;padding:14px;margin-top:10px"><h3>Tambah Produk</h3><input id="pTitle" class="input" placeholder="Nama"><input id="pDesc" class="input" placeholder="Deskripsi"><input id="pPrice" class="input" placeholder="Harga angka"><button type="button" class="btn blue" style="width:100%;margin-top:10px" onclick="addP()">Tambah</button><div id="aProdList" style="margin-top:10px"></div></div><div id="ad-or" style="display:none;background:#141f38;border:1px solid #223157;border-radius:14px;padding:14px;margin-top:10px"><h3>Pesanan</h3><div id="aOrderList"></div></div><div id="ad-re" style="display:none;background:#141f38;border:1px solid #223157;border-radius:14px;padding:14px;margin-top:10px"><h3>Buat Reseller - Set Expired</h3><input id="rU" class="input" placeholder="Username"><input id="rP" class="input" placeholder="Password"><input id="rD" type="number" class="input" placeholder="Hari aktif ex: 30"><button type="button" class="btn blue" style="width:100%;margin-top:10px;background:#8b5cf6;border-color:#8b5cf6" onclick="makeR()">Buat Reseller</button><div id="rList" style="margin-top:10px"></div></div></div></div></div>
 
 <div class="toast" id="toast"></div>
 <script>
@@ -131,41 +96,45 @@ let products=JSON.parse(localStorage.getItem('cikizz_products')||'null')||[
 let orders=JSON.parse(localStorage.getItem('cikizz_orders')||'[]');
 let resellers=JSON.parse(localStorage.getItem('cikizz_resellers')||'[]');
 function save(){localStorage.setItem('cikizz_products',JSON.stringify(products));localStorage.setItem('cikizz_orders',JSON.stringify(orders));localStorage.setItem('cikizz_resellers',JSON.stringify(resellers))}
-function render(){const g=document.getElementById('grid');g.innerHTML='';products.forEach(p=>{const d=document.createElement('div');d.className='pcard';d.innerHTML=`<div class="pbadge">${p.badge}</div><h3>${p.title}</h3><p>${p.desc}</p><div class="pfoot"><div class="price">Rp ${p.price.toLocaleString()} ${p.sub?'<small style="color:#64748b">'+p.sub+'</small>':''}</div><button type="button" class="pbtn" onclick="buy('${p.title.replace(/'/g,"\\'")}')">Beli Sekarang →</button></div>`;g.appendChild(d)})}
+function render(){document.getElementById('grid').innerHTML=products.map(p=>`<div class="pcard"><div class="pbadge">${p.badge}</div><h3>${p.title}</h3><p>${p.desc}</p><div class="pfoot"><div class="price">Rp ${p.price.toLocaleString()} ${p.sub||''}</div><button type="button" class="pbtn" onclick="buy('${p.title.replace(/'/g,"\\'")}')">Beli Sekarang →</button></div></div>`).join('')}
 function buy(t){const p=products.find(x=>x.title===t);orders.push({id:Date.now(),title:t,price:p.price,status:'pending',user:localStorage.getItem('cikizz_user')||'public',time:new Date().toLocaleString()});save();upd();window.open(`https://wa.me/62882000572938?text=${encodeURIComponent('Order '+t)}`,'_blank');toast('Pending')}
-function scrollProd(){document.getElementById('produk').scrollIntoView({behavior:'smooth'})}
-function setRole(r){role=r;['Public','Reseller','Admin'].forEach(x=>document.getElementById('r'+x).className=role===x.toLowerCase()?'active':'');document.getElementById('roleInfo').innerText=r==='reseller'?'Akun harus dibuat Admin dulu + ada expired':'public bisa belanja';}
-function openAuth(){document.getElementById('auth').classList.add('active')}function closeAuth(){document.getElementById('auth').classList.remove('active')}
+function setRole(r){role=r;['Public','Reseller','Admin'].forEach(x=>document.getElementById('r'+x).className=role===x.toLowerCase()?'active':'');}
 function doLogin(){
  const u=document.getElementById('aUser').value.trim(),p=document.getElementById('aPass').value.trim();
  if(!u||!p)return toast('isi user pass');
- if(role==='admin'){if(u!=='admin'||p!=='admin123')return toast('admin salah');localStorage.setItem('cikizz_sess',JSON.stringify({user:'admin',role:'admin'}));localStorage.setItem('cikizz_user','admin');closeAuth();openAdmin();refresh();return}
- if(role==='reseller'){const f=resellers.find(x=>x.user===u&&x.pass===p);if(!f)return toast('reseller tidak ada - hubungi admin');if(new Date(f.expiredAt)<new Date())return toast('EXPIRED hubungi admin');localStorage.setItem('cikizz_sess',JSON.stringify({user:u,role:'reseller',expiredAt:f.expiredAt}));localStorage.setItem('cikizz_user',u);location.href='/vip.html';return}
- localStorage.setItem('cikizz_sess',JSON.stringify({user:u,role:'public'}));localStorage.setItem('cikizz_user',u);closeAuth();refresh();toast('Login '+u);
+ if(role==='admin'){if(u!=='admin'||p!=='admin123')return toast('admin salah');localStorage.setItem('cikizz_sess',JSON.stringify({user:'admin',role:'admin'}));localStorage.setItem('cikizz_user','admin');document.getElementById('authGate').style.display='none';openAdmin();refresh();return}
+ if(role==='reseller'){const f=resellers.find(x=>x.user===u&&x.pass===p);if(!f)return toast('reseller gak ada - hub admin');if(new Date(f.expiredAt)<new Date())return toast('EXPIRED');localStorage.setItem('cikizz_sess',JSON.stringify({user:u,role:'reseller',expiredAt:f.expiredAt}));localStorage.setItem('cikizz_user',u);location.href='/vip.html';return}
+ localStorage.setItem('cikizz_sess',JSON.stringify({user:u,role:'public'}));localStorage.setItem('cikizz_user',u);document.getElementById('authGate').style.display='none';refresh();toast('Masuk sebagai '+u);
 }
-function handleDash(){const s=JSON.parse(localStorage.getItem('cikizz_sess')||'null');if(!s)return openAuth();if(s.role==='admin')return openAdmin();if(s.role==='reseller')return location.href='/vip.html';toast('Hi '+s.user)}
-function refresh(){const s=JSON.parse(localStorage.getItem('cikizz_sess')||'null');if(s){document.getElementById('btnMasuk').innerHTML=s.role==='admin'?'👑 '+s.user:s.role==='reseller'?'💎 '+s.user:'👤 '+s.user;document.getElementById('btnDash').innerText=s.role==='admin'?'Admin Panel →':s.role==='reseller'?'VIP Panel →':'Dashboard →'}}
-function openAdmin(){document.getElementById('admin').classList.add('active');aTab('overview');upd()}
+function refresh(){const s=JSON.parse(localStorage.getItem('cikizz_sess')||'null');if(s){document.getElementById('btnMasuk').innerText='Logout ('+s.user+')';document.getElementById('btnDash').innerText=s.role==='admin'?'Admin Panel →':s.role==='reseller'?'VIP Panel →':'Dashboard →';}}
+function handleDash(){const s=JSON.parse(localStorage.getItem('cikizz_sess')||'null');if(!s)return;if(s.role==='admin')return openAdmin();if(s.role==='reseller')return location.href='/vip.html';}
+function openAdmin(){document.getElementById('admin').classList.add('active');aTab('ov');upd()}
 function closeAdmin(){document.getElementById('admin').classList.remove('active')}
-function aTab(t){['overview','products','orders','reseller'].forEach(x=>{document.getElementById('ad-'+x).style.display=x===t?'block':'none';document.getElementById('ab'+{overview:1,products:2,orders:3,reseller:4}[x]).className=x===t?'btn blue':'btn'});upd()}
+function aTab(t){['ov','pr','or','re'].forEach(x=>{document.getElementById('ad-'+x).style.display=x===t?'block':'none';document.getElementById('ab'+{ov:1,pr:2,or:3,re:4}[x]).className=x===t?'btn blue':'btn'});upd()}
 function upd(){
  document.getElementById('stProd').innerText=products.length;
  document.getElementById('stRes').innerText=resellers.length;
  document.getElementById('stPend').innerText=orders.filter(x=>x.status==='pending').length;
  document.getElementById('stOmz').innerText='Rp '+orders.filter(x=>x.status==='done').reduce((a,b)=>a+b.price,0).toLocaleString();
  document.getElementById('aProdList').innerHTML=products.map((p,i)=>`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08)"><b style="font-size:12px">${p.title}</b><button type="button" class="btn" style="padding:4px 8px" onclick="delP(${i})">Hapus</button></div>`).join('');
- document.getElementById('aOrderList').innerHTML=orders.map(o=>`<div style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08)"><b style="font-size:12px">${o.title}</b> - ${o.user} - ${o.status} <button type="button" class="btn blue" style="padding:2px 6px;margin-left:6px" onclick="setO(${o.id},'done')">Done</button><button type="button" class="btn" style="padding:2px 6px" onclick="setO(${o.id},'cancel')">X</button></div>`).join('')||'kosong';
- document.getElementById('rList').innerHTML=resellers.map((r,i)=>`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08)"><div><b style="font-size:12px">${r.user}</b><div style="font-size:10px;color:${new Date(r.expiredAt)<new Date()?'#ef4444':'#22c55e'}">${new Date(r.expiredAt).toLocaleString()} - ${r.pass}</div></div><div><button type="button" class="btn" style="padding:4px 6px" onclick="ext(${i},7)">+7d</button><button type="button" class="btn" style="padding:4px 6px;background:#ef4444" onclick="delR(${i})">Del</button></div></div>`).join('')||'belum ada reseller';
+ document.getElementById('aOrderList').innerHTML=orders.map(o=>`<div style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08)"><b style="font-size:12px">${o.title}</b> - ${o.user} <button type="button" class="btn blue" style="padding:2px 6px;margin-left:6px" onclick="setO(${o.id},'done')">Done</button><button type="button" class="btn" style="padding:2px 6px" onclick="setO(${o.id},'cancel')">X</button></div>`).join('')||'kosong';
+ document.getElementById('rList').innerHTML=resellers.map((r,i)=>`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08)"><div><b style="font-size:12px">${r.user}</b><div style="font-size:10px;color:${new Date(r.expiredAt)<new Date()?'#ef4444':'#22c55e'}">${new Date(r.expiredAt).toLocaleDateString()} - ${r.pass}</div></div><button type="button" class="btn" style="padding:4px 6px;background:#ef4444" onclick="delR(${i})">Del</button></div>`).join('')||'belum ada';
 }
-function addProd(){const t=document.getElementById('pTitle').value.trim(),d=document.getElementById('pDesc').value.trim(),pr=parseInt(document.getElementById('pPrice').value.replace(/[^0-9]/g,''))||0;if(!t||!pr)return toast('isi');products.push({title:t,desc:d,price:pr,badge:'BARU'});save();render();upd()}
+function addP(){const t=document.getElementById('pTitle').value.trim(),d=document.getElementById('pDesc').value.trim(),pr=parseInt(document.getElementById('pPrice').value.replace(/[^0-9]/g,''))||0;if(!t||!pr)return toast('isi');products.push({title:t,desc:d,price:pr,badge:'BARU'});save();render();upd()}
 function delP(i){products.splice(i,1);save();render();upd()}
 function setO(id,s){let idx=orders.findIndex(x=>x.id===id);if(idx>-1){if(s==='cancel')orders.splice(idx,1);else orders[idx].status=s;save();upd()}}
-function makeRes(){const u=document.getElementById('rU').value.trim(),p=document.getElementById('rP').value.trim(),days=parseInt(document.getElementById('rD').value)||0;if(!u||!p||!days)return toast('isi user pass hari');if(resellers.find(x=>x.user===u))return toast('udah ada');const ex=new Date();ex.setDate(ex.getDate()+days);resellers.push({user:u,pass:p,expiredAt:ex.toISOString()});save();upd();toast('Reseller '+u+' '+days+' hari');document.getElementById('rU').value='';document.getElementById('rP').value='';document.getElementById('rD').value=''}
+function makeR(){const u=document.getElementById('rU').value.trim(),p=document.getElementById('rP').value.trim(),d=parseInt(document.getElementById('rD').value)||0;if(!u||!p||!d)return toast('isi');if(resellers.find(x=>x.user===u))return toast('udah ada');const ex=new Date();ex.setDate(ex.getDate()+d);resellers.push({user:u,pass:p,expiredAt:ex.toISOString()});save();upd();toast('Reseller '+u+' '+d+' hari')}
 function delR(i){resellers.splice(i,1);save();upd()}
-function ext(i,d){let e=new Date(resellers[i].expiredAt);e.setDate(e.getDate()+d);resellers[i].expiredAt=e.toISOString();save();upd()}
-function logout(){localStorage.removeItem('cikizz_sess');localStorage.removeItem('cikizz_user');closeAdmin();refresh();toast('logout');location.reload()}
+function logout(){localStorage.removeItem('cikizz_sess');localStorage.removeItem('cikizz_user');document.getElementById('authGate').style.display='flex';closeAdmin();toast('logout')}
 function toast(m){const t=document.getElementById('toast');t.innerText=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
-window.onload=()=>{render();refresh();upd();const s=JSON.parse(localStorage.getItem('cikizz_sess')||'null');if(s&&s.role==='reseller'&&new Date(s.expiredAt)<new Date()){localStorage.removeItem('cikizz_sess');toast('Reseller expired')}};
+window.onload=()=>{
+ render();upd();
+ const s=JSON.parse(localStorage.getItem('cikizz_sess')||'null');
+ if(s){
+  if(s.role==='reseller'&&new Date(s.expiredAt)<new Date()){localStorage.removeItem('cikizz_sess');document.getElementById('authGate').style.display='flex';toast('Expired');}
+  else{document.getElementById('authGate').style.display='none';refresh();}
+ }else{document.getElementById('authGate').style.display='flex';}
+};
 </script>
 </body>
 </html>
